@@ -4,11 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.P03_HomePage;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
-
-import java.time.Duration;
 
 public class D06_HomeSliders
 {
@@ -17,7 +13,6 @@ public class D06_HomeSliders
     Actions actions = new Actions(Hooks.driver);
 
     SoftAssert soft = new SoftAssert();
-
 
     @When("user clicks on first slider")
     public void userClicksOnFirstSlider() throws InterruptedException {
@@ -34,30 +29,22 @@ public class D06_HomeSliders
         soft.assertAll();
     }
 
-
     @When("user clicks on second slider")
     public void userClicksOnSecondSlider() throws InterruptedException
     {
-
         Thread.sleep(4000);
         actions.moveToElement(HomePageObj.HomeSliders().get(1)).click().build().perform();
-
-
     }
 
     @Then("direct user to second slider url {string}")
-    public void directUserToSecondSliderUrl(String secondSliderUrl)
+    public void directUserToSecondSliderUrl(String secondSliderUrl) throws InterruptedException
     {
-        WebDriverWait wait = new WebDriverWait(Hooks.driver,Duration.ofMillis(5000));
         //Expected condition will fail and driver will wait until condition appears but nothing happens
-        wait.until(ExpectedConditions.urlContains(secondSliderUrl));
+//        WebDriverWait wait = new WebDriverWait(Hooks.driver,Duration.ofMillis(5000));
+//        wait.until(ExpectedConditions.urlContains(secondSliderUrl));
 
+        Thread.sleep(3000);
         soft.assertEquals(Hooks.driver.getCurrentUrl(),secondSliderUrl,"secondSlider Assertion will fail");
         soft.assertAll();
     }
-
-
-
-
-
 }
