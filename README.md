@@ -12,7 +12,7 @@ Automation Testing for Demo E-Commerce Website "NopCommerce" using :-
 	
 Covering These features :
 	
-	1- Registeration .
+	1- Registration .
 	2- Login.
 	3- Currencies.
 	4- Search
